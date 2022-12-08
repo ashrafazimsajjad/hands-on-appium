@@ -15,21 +15,19 @@ desired_caps = {
 driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", desired_caps)
 
 ele_id = driver.find_element(AppiumBy.ID, "com.code2lead.kwad:id/EnterValue")
+print("Text on the Button ", ele_id.text)
+print("Text on the Button ", ele_id.get_attribute("text"))
+print("Content Des  of the Button ", ele_id.get_attribute("content-desc"))
+print("Resource ID  of the Button ", ele_id.get_attribute("resource-id"))
 ele_id.click()
 
 time.sleep(2)
-
 ele_classname = driver.find_element(AppiumBy.CLASS_NAME, "android.widget.EditText")
 ele_classname.send_keys("Value entered")
-ele_classname.click()
-
-driver.press_keycode(67)
-driver.press_keycode(67)
+time.sleep(2)
+ele_classname.clear()
+time.sleep(2)
+ele_classname.send_keys("Value entered")
 
 time.sleep(2)
-
-driver.press_keycode(4)
-driver.press_keycode(4)
-
-time.sleep(5)
 driver.quit()
